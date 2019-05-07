@@ -33,8 +33,10 @@ Add to `~/.bashrc` and use `xac <container_name>`:
 ```
 # functions
 ___xac() {
-    container=${1:-'valid_container_name'}
-    docker exec $container sh -c "xauth add `hostname`/unix:10  MIT-MAGIC-COOKIE-1 `xauth list | grep "^$(hostname)/unix:10 " | awk '{print $3}'`"
+    container=${1:-'valid_container_namei'}
+    display_id=`echo $DISPLAY | grep -Eo '[+-]?[0-9]+([.][0-9]+)?'`
+    display_id=${display_id%".0"}
+    docker exec $container sh -c "xauth add `hostname`/unix:$display_id  MIT-MAGIC-COOKIE-1 `xauth list | grep "^$(hostname)/unix:$display_id " | awk '{print $3}'`"
 }
 
 # aliases
