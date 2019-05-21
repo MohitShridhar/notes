@@ -42,3 +42,8 @@ ___xac() {
 # aliases
 alias xac=___xac
 ```
+
+Then call:
+```
+$ xac <container_name_or_id>
+```
